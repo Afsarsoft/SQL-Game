@@ -35,6 +35,35 @@ EXEC game.InsertHistory @SP = @SP,
     @Status = 'Start',
     @Message = @Message;
 
+    -------------------------------------------------------------------------------
+SET @ErrorText = 'Failed adding FOREIGN KEY for Table game.Discount.';
+
+IF EXISTS (SELECT *
+FROM sys.foreign_keys
+WHERE object_id = OBJECT_ID(N'game.FK_Discount_Retailer_RetailerID')
+  AND parent_object_id = OBJECT_ID(N'game.Discount')
+)
+BEGIN
+  SET @Message = 'FOREIGN KEY for Table game.Discount already exist, skipping....';
+  RAISERROR(@Message, 0,1) WITH NOWAIT;
+  EXEC game.InsertHistory @SP = @SP,
+        @Status = 'Run',
+        @Message = @Message;
+END
+ELSE
+BEGIN
+  ALTER TABLE game.Discount
+   ADD CONSTRAINT FK_Discount_Retailer_RetailerID FOREIGN KEY (RetailerID)
+      REFERENCES game.Retailer (RetailerID);
+
+  SET @Message = 'Completed adding FOREIGN KEY for TABLE game.Discount.';
+  RAISERROR(@Message, 0,1) WITH NOWAIT;
+  EXEC game.InsertHistory @SP = @SP,
+   @Status = 'Run',
+   @Message = @Message;
+END
+-------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------
 SET @ErrorText = 'Failed adding FOREIGN KEY for Table game.Game.';
 
