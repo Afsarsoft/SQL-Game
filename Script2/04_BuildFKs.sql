@@ -1,7 +1,7 @@
 /***************************************************************************************************
-File: 05_CreateFKs.sql
+File: 04_CreateFKs.sql
 ----------------------------------------------------------------------------------------------------
-Create Date:    2021-03-01 (yyyy-mm-dd)
+Create Date:    2020-09-01 (yyyy-mm-dd)
 Author:         Surush Cyrus
 Description:    Call SP game.CreateFKs to create needed FKs
 Call by:        TBD, Add hoc

@@ -52,8 +52,8 @@ INSERT INTO game.PartnerInfo
    (PartnerID, Website, City, [State], Country, Note)
 VALUES
    (01, 'www.microsoft.com', 'Redmond', 'WA', 'USA', 'TBD'),
-   (02, 'Sony', 'Tokyo', 'N/A', 'Japan', 'TBD'),
-   (03, 'ABC Games', 'Dallas', 'Texas', 'USA', 'TBD')
+   (02, 'www.sony.com', 'Tokyo', 'N/A', 'Japan', 'TBD'),
+   (03, 'www.abcgame.com', 'Dallas', 'Texas', 'USA', 'TBD')
 
 SET @Message = CONVERT(VARCHAR(10), @@ROWCOUNT) + ' rows effected. Completed INSERT to table PartnerInfo';   
 RAISERROR (@Message, 0,1) WITH NOWAIT;
@@ -80,6 +80,31 @@ EXEC game.InsertHistory @SP = @SP,
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------
+SET @ErrorText = 'Failed INSERT to table Discount!';
+INSERT INTO game.Discount
+   (DiscountID, RetailerID, Name, MinQuantity, MaxQuantity, Amount)
+VALUES
+   (01, 01, 'Costco Low Order', 100, 1000, 5),
+   (02, 01, 'Costco Mid Order', 1000, 10000, 7),
+   (03, 01, 'Costco High Order', 10000, 100000, 10),
+   (04, 02, 'Amazon Low Order', 100, 1000, 2),
+   (05, 02, 'Amazon Mid Order', 1000, 10000, 4),
+   (06, 02, 'Amazon High Order', 10000, 100000, 6),
+   (07, 03, 'Best Buy Low Order', 100, 1000, 3),
+   (08, 03, 'Best Buy Mid Order', 1000, 10000, 5),
+   (09, 03, 'Best Buy High Order', 10000, 100000, 7),
+   (10, 04, 'Target Low Order', 100, 1000, 4),
+   (11, 04, 'Target Mid Order', 1000, 10000, 5),
+   (12, 04, 'Target High Order', 10000, 100000, 6)
+
+SET @Message = CONVERT(VARCHAR(10), @@ROWCOUNT) + ' rows effected. Completed INSERT to table PartnerInfo';   
+RAISERROR (@Message, 0,1) WITH NOWAIT;
+EXEC game.InsertHistory @SP = @SP,
+   @Status = 'Run',
+   @Message = @Message;
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
 SET @ErrorText = 'Failed INSERT to table Game!';
 INSERT INTO game.Game
    (GameID, TypeID, PartnerID, Name, Price, Note)
@@ -88,10 +113,7 @@ VALUES
    (02, 01, 01, 'Game 02', 200, 'TBD'),
    (03, 01, 01, 'Game 03', 300, 'TBD'),
    (04, 02, 02, 'Game 04', 400, 'TBD'),
-   (05, 02, 01, 'Game 05', 250, 'TBD'),
-   (06, 01, 01, 'Game 06', 350, 'TBD'),
-   (07, 01, 01, 'Game 07', 150, 'TBD'),
-   (08, 01, 03, 'Game 08', 350, 'TBD')
+   (05, 03, 01, 'Game 05', 250, 'TBD')
 
 SET @Message = CONVERT(VARCHAR(10), @@ROWCOUNT) + ' rows effected. Completed INSERT to table Game';   
 RAISERROR (@Message, 0,1) WITH NOWAIT;
@@ -99,6 +121,68 @@ EXEC game.InsertHistory @SP = @SP,
    @Status = 'Run',
    @Message = @Message;
 -------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+SET @ErrorText = 'Failed INSERT to table GameTeam!';
+INSERT INTO game.GameTeam
+   (GameID, TeamID, RoyaltyPer)
+VALUES
+   (01, 01, 100),
+   (01, 02, 200),
+   (01, 03, 300),
+
+   (02, 01, 100),
+   (02, 02, 200),
+
+   (03, 01, 100),
+   (03, 02, 200),
+   (03, 03, 300),
+
+   (04, 01, 100),
+   (04, 02, 200),
+
+   (05, 01, 100)
+
+
+SET @Message = CONVERT(VARCHAR(10), @@ROWCOUNT) + ' rows effected. Completed INSERT to table Game';   
+RAISERROR (@Message, 0,1) WITH NOWAIT;
+EXEC game.InsertHistory @SP = @SP,
+   @Status = 'Run',
+   @Message = @Message;
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+SET @ErrorText = 'Failed INSERT to table Team!';
+INSERT INTO game.Team
+   (TeamID, Name, Note)
+VALUES
+   (01, 'Team A', 'Doing Basic Stuff'),
+   (02, 'Team B', 'Doing Average Stuff'),
+   (03, 'Team C', 'Doing Advance Stuff')
+
+SET @Message = CONVERT(VARCHAR(10), @@ROWCOUNT) + ' rows effected. Completed INSERT to table Game';   
+RAISERROR (@Message, 0,1) WITH NOWAIT;
+EXEC game.InsertHistory @SP = @SP,
+   @Status = 'Run',
+   @Message = @Message;
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+SET @ErrorText = 'Failed INSERT to table Type!';
+INSERT INTO game.Type
+   (TypeID, Name, Note)
+VALUES
+   (01, 'Action', 'Action stuff'),
+   (02, 'Romantic', 'Romantic Stuff'),
+   (03, 'Kids Learning', 'Kids Learning')
+
+SET @Message = CONVERT(VARCHAR(10), @@ROWCOUNT) + ' rows effected. Completed INSERT to table Game';   
+RAISERROR (@Message, 0,1) WITH NOWAIT;
+EXEC game.InsertHistory @SP = @SP,
+   @Status = 'Run',
+   @Message = @Message;
+-------------------------------------------------------------------------------
+
 
 SET @Message = 'Completed SP ' + @SP + '. Duration in minutes:  '   
    + CONVERT(VARCHAR(12), CONVERT(DECIMAL(6,2),datediff(mi, @StartTime, getdate())));    
