@@ -1,2 +1,2 @@
 # SQL-Game
- Sample SQL DB for Game
+Sample SQL DB for fictional Game production company.
