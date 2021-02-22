@@ -27,6 +27,12 @@ EXEC game.InsertOrder @GameID = 1,
                 @RetailerID = 1,
                 @Quantity = 200
 
+EXEC game.InsertOrder @GameID = 2,
+                @RetailerID = 2,
+                @Quantity = 1100
+
+SELECT *
+FROM game.[Order]
 
 SELECT *
 FROM game.History
