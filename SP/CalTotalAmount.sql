@@ -30,12 +30,14 @@ DECLARE @ErrorText   VARCHAR(MAX),
 
         @RowCount       INT,
         @Price          MONEY,
+        @PreTotatl      MONEY,
         @Discount       TINYINT,
         @DiscountAmount MONEY;
 
 BEGIN TRY;
 SET @RowCount = 0;
 SET @Price = 0;
+SET @PreTotatl = 0;
 SET @Discount = 0;
 SET @DiscountAmount = 0;
 SET @ErrorText = 'Unexpected ERROR in setting the variables!';
@@ -101,8 +103,9 @@ EXEC game.InsertHistory @SP = @SP,
 -------------------------------------------------------------------------------
 SET @ErrorText = 'Failed calculating Total!';
 
-SET @DiscountAmount =  ((@Price * @Quantity) * @Discount/100);
-SET @Total = ((@Price * @Quantity) + @DiscountAmount);
+SET @PreTotatl = (@Price * @Quantity);
+SET @DiscountAmount = (@PreTotatl * @Discount/100);
+SET @Total = (@PreTotatl - @DiscountAmount);
 
 SET @Message = '@Total = ' + CONVERT(VARCHAR(10), @Total) + '.';
 RAISERROR (@Message, 0,1) WITH NOWAIT;
