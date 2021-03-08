@@ -1,11 +1,11 @@
-/*
+-- /*
 SELECT MAX(D.Amount)
 FROM game.Retailer R
     INNER JOIN game.Discount D
     ON R.RetailerID = D.RetailerID
 WHERE  R.RetailerID = 1 AND
     20100 BETWEEN D.MinQuantity AND D.MaxQuantity
-*/
+-- */
 
 /*
 DECLARE @TotalAmount MONEY,
@@ -23,17 +23,4 @@ SET @Message = '@TotalAmount = ' + CONVERT(VARCHAR(10), @TotalAmount) + ' is the
 RAISERROR (@Message, 0,1) WITH NOWAIT;
 */
 
-EXEC game.InsertOrder @GameID = 1,
-                @RetailerID = 1,
-                @Quantity = 200
 
-EXEC game.InsertOrder @GameID = 2,
-                @RetailerID = 2,
-                @Quantity = 1100
-
-SELECT *
-FROM game.[Order]
-
-SELECT *
-FROM game.History
-ORDER BY RowID DESC
