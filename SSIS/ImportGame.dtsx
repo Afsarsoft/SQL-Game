@@ -6,21 +6,21 @@
   DTS:CreatorComputerName="SCYRUSH1"
   DTS:CreatorName="REDMOND\scyrus"
   DTS:Description="SSIS Package Description"
-  DTS:DTSID="{13F392F6-06DA-42F2-B89B-53BF9761F253}"
+  DTS:DTSID="{29089DB4-01E4-4441-AB0E-04169204A43F}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.152"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="02_ImportFromGameSQLDB"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{DA3A603A-8E6E-4D0C-A580-47FCD80F723F}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{895041CD-960C-4D56-920F-EB33E651E0E7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[DestinationAzureDB_Connection]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{382D94DA-C27E-4D92-AEE7-98B29DB05E28}"
+      DTS:DTSID="{005C76BE-51C9-4583-8723-B4BFE0370A1B}"
       DTS:ObjectName="DestinationAzureDB_Connection">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -28,18 +28,18 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMYi/rr8wqk6vtKCH0KEzpwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABrgPf72bR7OckuNcXIhVfBAAAAAASAAACgAAAAEAAAAAPSaCBbsiW+g+4pxeJ8itMYAAAAexWJfvEi580phzrZlXPZt2sp6dfdblK2FAAAAKcA9ncR7r8Og6P+DqtOIW94XZhJ</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHjdTuEbuIkWIdmtGzzipZAAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB20ZmRpRwJ4CouLvMCQqG+AAAAAASAAACgAAAAEAAAAGhB0vliHKVaw1Yw9clsBZAYAAAARjCpho9AFhuzljyJjdkWpupn9v3VirYnFAAAAFQkjbTQz7qM37ORsAoaHPIJORcM</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[SourceDB_Connection]"
       DTS:CreationName="OLEDB"
-      DTS:DTSID="{4E708EA6-EF18-4B48-873F-07FE387E1286}"
+      DTS:DTSID="{8F289960-8E52-44C2-A142-114E49C8367E}"
       DTS:ObjectName="SourceDB_Connection">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=.;Initial Catalog=SQL1;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=false;" />
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Demo;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=false;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -49,7 +49,7 @@
       DTS:refId="Package\Create FKs"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{A415BE76-A956-47D6-B30F-460272F8D95E}"
+      DTS:DTSID="{4E3F7825-FD1C-4B6E-BBA3-D0AEEE12ACC8}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Create FKs"
@@ -57,7 +57,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{382D94DA-C27E-4D92-AEE7-98B29DB05E28}"
+          SQLTask:Connection="{005C76BE-51C9-4583-8723-B4BFE0370A1B}"
           SQLTask:SqlStatementSource="EXEC game.CreateFKs;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -65,7 +65,7 @@
       DTS:refId="Package\Drop FKs"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{0488A40D-D0C5-4CDF-9997-9D99B3705C1F}"
+      DTS:DTSID="{47A0E931-72D2-4278-B4D5-C641459881D4}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Drop FKs"
@@ -73,14 +73,14 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{382D94DA-C27E-4D92-AEE7-98B29DB05E28}"
+          SQLTask:Connection="{005C76BE-51C9-4583-8723-B4BFE0370A1B}"
           SQLTask:SqlStatementSource="EXEC game.DropFKs;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Move Data to Azure"
       DTS:CreationName="Microsoft.Pipeline"
-      DTS:DTSID="{A41C2B3D-6A45-4FCF-9C57-334761345C19}"
+      DTS:DTSID="{44116560-1BBA-4982-BD00-0B20556BA197}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:FailPackageOnFailure="True"
       DTS:LocaleID="-1"
@@ -117,7 +117,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -282,7 +282,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -449,7 +449,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -622,7 +622,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -821,7 +821,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1023,7 +1023,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1234,7 +1234,7 @@
       DTS:refId="Package\Truncate Tables"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{C396D4D8-1904-475C-B0E0-539F7CDF5089}"
+      DTS:DTSID="{3CD86730-F823-440C-853F-B36FD64C87DA}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
       DTS:ObjectName="Truncate Tables"
@@ -1242,7 +1242,7 @@
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{382D94DA-C27E-4D92-AEE7-98B29DB05E28}"
+          SQLTask:Connection="{005C76BE-51C9-4583-8723-B4BFE0370A1B}"
           SQLTask:SqlStatementSource="TRUNCATE TABLE game.Retailer&#xA;GO&#xA;TRUNCATE TABLE game.Discount;&#xA;GO&#xA;TRUNCATE TABLE game.Game;&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1251,7 +1251,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{D66033B2-9103-4DC8-B44F-2C3C51DC080E}"
+      DTS:DTSID="{64BBA7E5-52F2-4C0A-8649-E88B9E7DA792}"
       DTS:From="Package\Drop FKs"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -1259,7 +1259,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{F383ECCA-51DC-4709-AAF0-38BC39283C2B}"
+      DTS:DTSID="{94590F2E-4DE3-495F-9994-06F84E2CE39E}"
       DTS:From="Package\Truncate Tables"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
@@ -1267,7 +1267,7 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{911376DE-6749-418E-B815-19B7A2A5AA83}"
+      DTS:DTSID="{2708D3A1-1ECA-42BE-A32B-490428A35C0F}"
       DTS:From="Package\Move Data to Azure"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -1286,13 +1286,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="173.333333333334,42.6666666666667"
-          Id="Package\Move Data to Azure"
-          TopLeft="202.999997057021,218.973688228639" />
+          Size="133.333333333334,42.6666666666667"
+          Id="Package\Create FKs"
+          TopLeft="217.499996758998,304.473689941488" />
         <NodeLayout
           Size="124,42.6666666666667"
           Id="Package\Drop FKs"
           TopLeft="220.624996712431,54.0526325963541" />
+        <NodeLayout
+          Size="173.333333333334,42.6666666666667"
+          Id="Package\Move Data to Azure"
+          TopLeft="202.999997057021,218.973688228639" />
         <NodeLayout
           Size="157.333333333334,42.6666666666667"
           Id="Package\Truncate Tables"
@@ -1341,10 +1345,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="133.333333333334,42.6666666666667"
-          Id="Package\Create FKs"
-          TopLeft="217.499996758998,304.473689941488" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="286.916663574676,261.640354895306">
