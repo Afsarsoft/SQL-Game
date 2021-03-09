@@ -1,0 +1,3456 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/9/2021 11:47:39 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SCYRUSH1"
+  DTS:CreatorName="REDMOND\scyrus"
+  DTS:DTSID="{B1E9AE23-A579-490D-804D-6FE01F3EC95C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="ExportData"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{8F7F2981-DBA5-492E-858C-B41766697BEC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DB_Connection]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{891D67F8-4902-4409-8B09-CFAB5B7255EC}"
+      DTS:ObjectName="DB_Connection">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Demo;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Discount]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{F5B3D757-DFF7-473E-B1BD-4544ABC230EC}"
+      DTS:ObjectName="Discount">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\Discount.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DiscountID"
+              DTS:DTSID="{62B9B4C4-469E-4342-A62D-E9C983FE0372}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RetailerID"
+              DTS:DTSID="{6BE46EC0-1216-4FF4-91CF-26A7762C24E4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{CB6463C2-CA40-4D04-8EB0-98AFCB4B7884}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MinQuantity"
+              DTS:DTSID="{30E8CB32-7CAC-48DA-AB09-D29295E33BC4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MaxQuantity"
+              DTS:DTSID="{482C1354-2026-431D-8F8F-8D1D2C5A6870}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Amount"
+              DTS:DTSID="{C0A9CBFD-61B0-4697-B345-4E66C48798ED}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Game]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{08F13CCD-7BD5-4D25-8CC1-7B8EA45A77C9}"
+      DTS:ObjectName="Game">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\Game.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GameID"
+              DTS:DTSID="{D2C8DE79-A837-41ED-B01C-BFC0E12FF95D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TypeID"
+              DTS:DTSID="{56DB2E0C-08D1-46E1-9AA2-7BCB3C7E41A6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PartnerID"
+              DTS:DTSID="{B78ECD8B-F761-4F87-B568-0B3D9691DA23}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{6ABA541D-2334-46DE-9FCC-C979FF009F15}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Price"
+              DTS:DTSID="{5D56C885-10C4-483C-B8AF-522FE135E749}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Note"
+              DTS:DTSID="{B9465182-E6A5-4C11-87EF-39B305576BA7}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[GameTeam]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{FC67D765-C62E-4EC2-9B8E-12BEE516DDC3}"
+      DTS:ObjectName="GameTeam">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\GameTeam.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GameID"
+              DTS:DTSID="{44AE050A-2C11-4384-9D89-893D5581DE4F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TeamID"
+              DTS:DTSID="{C7CF0E89-2D3D-4089-A839-3EA7827CEEFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RoyaltyPer"
+              DTS:DTSID="{0DE88F07-6001-40EE-BD09-69D029B0E789}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Order]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{333DC70B-C54B-46F7-A46E-D0B1E22B1AEB}"
+      DTS:ObjectName="Order">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\Order.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OrderID"
+              DTS:DTSID="{834F2FD5-C37E-42ED-8E47-164FC91E1908}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="GameID"
+              DTS:DTSID="{C276CA95-5CBE-41B4-911D-FB7D58897900}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RetailerID"
+              DTS:DTSID="{00B0B7BA-2B35-45E5-B6F7-84A09B63FD9C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OrderDate"
+              DTS:DTSID="{FAC1C5E8-1DBD-4ED5-A379-5C83A2008A88}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Quantity"
+              DTS:DTSID="{3104154B-0CB5-4D84-AE8A-2C8D884F99DB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalAmount"
+              DTS:DTSID="{3E3FAA2D-BDFA-4FB2-8792-7ECDE6AF3B1D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Partner]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9FE8F005-B860-4137-AC25-D69B4FA21F61}"
+      DTS:ObjectName="Partner">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\Partner.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PartnerID"
+              DTS:DTSID="{1F2C0146-C258-49ED-933C-C6AF2052BB00}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{4009FCB0-2AD1-45E4-80B8-EEF4E3AF77C9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PartnerInfo]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{7A42A082-7B00-4EB5-93B1-CA7E2F1AE083}"
+      DTS:ObjectName="PartnerInfo">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\PartnerInfo.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PartnerID"
+              DTS:DTSID="{5633AA2F-39D8-4EDF-946C-37CCBFA3C209}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Website"
+              DTS:DTSID="{4A28B07C-537C-4EB6-B529-92251B40C558}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{8C95F972-D03C-4124-99AE-E3BD8E2A0B96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="State"
+              DTS:DTSID="{73CCF957-1184-4308-A7CD-68375E8690F6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Country"
+              DTS:DTSID="{DBBF74AD-9963-4E7C-8013-E22442F53377}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Note"
+              DTS:DTSID="{28B41851-F453-46B5-BE0D-30366A2EB34A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Retailer]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{170C89F2-7296-43DB-8ED7-5115DD4A336F}"
+      DTS:ObjectName="Retailer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\RetailerInfo.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RetailerID"
+              DTS:DTSID="{85D2DB1B-0479-4831-A0EF-2E0EAB325303}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{19161619-6702-4135-A3E0-49BBABC797CF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Website"
+              DTS:DTSID="{F8E01ED3-CF31-40CA-8F35-CC693C12148E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Address"
+              DTS:DTSID="{D6E11C7D-1B30-4E4D-A42F-57B53376A7EF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{1D2E132D-72C3-4CE1-9558-DDDB6B2C3C89}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Zip"
+              DTS:DTSID="{E9F40617-60AA-497C-BB18-7B136ADDA672}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Team]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2B8CBBBD-8FEC-4727-95D0-93E9844A71C8}"
+      DTS:ObjectName="Team">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\Team.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TeamID"
+              DTS:DTSID="{79DD2F19-EF61-4FBD-84E4-56506BF22EBF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{06A3DE38-A9F7-4A2D-81F3-04AC33142CA8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Note"
+              DTS:DTSID="{EA94EFCD-FCDE-474C-B6B3-B44C788B9029}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Type]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E554958F-5281-4A45-B7A1-AA04E3F58FD9}"
+      DTS:ObjectName="Type">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\game\CSV\Type.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:DataType="17"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TypeID"
+              DTS:DTSID="{51D281AF-17FD-47FD-957C-B339E274D46D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Name"
+              DTS:DTSID="{5C92C8CA-CFF7-478D-A58F-672FE0855A11}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Note"
+              DTS:DTSID="{AB5E91EC-7629-40F3-8991-18C051D6EF30}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Export To CSV"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2C20D476-08D0-4FE7-93BA-FFB7A16C2F97}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Export To CSV"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Export To CSV\CSV Discount"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Discount"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Discount.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Discount]"
+                  connectionManagerRefId="Package.ConnectionManagers[Discount]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].Columns[DiscountID]"
+                      cachedDataType="ui1"
+                      cachedName="DiscountID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[DiscountID]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[DiscountID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].Columns[RetailerID]"
+                      cachedDataType="ui1"
+                      cachedName="RetailerID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[RetailerID]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[RetailerID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].Columns[MinQuantity]"
+                      cachedDataType="i4"
+                      cachedName="MinQuantity"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[MinQuantity]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[MinQuantity]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].Columns[MaxQuantity]"
+                      cachedDataType="i4"
+                      cachedName="MaxQuantity"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[MaxQuantity]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[MaxQuantity]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].Columns[Amount]"
+                      cachedDataType="ui1"
+                      cachedName="Amount"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[Amount]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[Amount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[DiscountID]"
+                      dataType="ui1"
+                      name="DiscountID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[RetailerID]"
+                      dataType="ui1"
+                      name="RetailerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[MinQuantity]"
+                      dataType="i4"
+                      name="MinQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[MaxQuantity]"
+                      dataType="i4"
+                      name="MaxQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input].ExternalColumns[Amount]"
+                      dataType="ui1"
+                      name="Amount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV Game"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Game"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Game.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Game]"
+                  connectionManagerRefId="Package.ConnectionManagers[Game]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].Columns[GameID]"
+                      cachedDataType="ui1"
+                      cachedName="GameID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[GameID]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[GameID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].Columns[TypeID]"
+                      cachedDataType="ui1"
+                      cachedName="TypeID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[TypeID]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[TypeID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].Columns[PartnerID]"
+                      cachedDataType="ui1"
+                      cachedName="PartnerID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[PartnerID]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[PartnerID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].Columns[Price]"
+                      cachedDataType="cy"
+                      cachedName="Price"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].Columns[Note]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Note"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Note]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[GameID]"
+                      dataType="ui1"
+                      name="GameID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[TypeID]"
+                      dataType="ui1"
+                      name="TypeID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[PartnerID]"
+                      dataType="ui1"
+                      name="PartnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[Price]"
+                      dataType="cy"
+                      name="Price" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV GameTeam"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV GameTeam"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV GameTeam.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[GameTeam]"
+                  connectionManagerRefId="Package.ConnectionManagers[GameTeam]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].Columns[GameID]"
+                      cachedDataType="ui1"
+                      cachedName="GameID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].ExternalColumns[GameID]"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[GameID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].Columns[TeamID]"
+                      cachedDataType="ui1"
+                      cachedName="TeamID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].ExternalColumns[TeamID]"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[TeamID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].Columns[RoyaltyPer]"
+                      cachedDataType="cy"
+                      cachedName="RoyaltyPer"
+                      externalMetadataColumnId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].ExternalColumns[RoyaltyPer]"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[RoyaltyPer]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].ExternalColumns[GameID]"
+                      dataType="ui1"
+                      name="GameID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].ExternalColumns[TeamID]"
+                      dataType="ui1"
+                      name="TeamID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input].ExternalColumns[RoyaltyPer]"
+                      dataType="cy"
+                      name="RoyaltyPer" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV Order"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Order"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Order.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Order]"
+                  connectionManagerRefId="Package.ConnectionManagers[Order]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[OrderID]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].Columns[GameID]"
+                      cachedDataType="ui1"
+                      cachedName="GameID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[GameID]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[GameID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].Columns[RetailerID]"
+                      cachedDataType="ui1"
+                      cachedName="RetailerID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[RetailerID]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[RetailerID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].Columns[TotalAmount]"
+                      cachedDataType="cy"
+                      cachedName="TotalAmount"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[TotalAmount]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[TotalAmount]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[GameID]"
+                      dataType="ui1"
+                      name="GameID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[RetailerID]"
+                      dataType="ui1"
+                      name="RetailerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input].ExternalColumns[TotalAmount]"
+                      dataType="cy"
+                      name="TotalAmount" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV Partner"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Partner"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Partner.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Partner]"
+                  connectionManagerRefId="Package.ConnectionManagers[Partner]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input].Columns[PartnerID]"
+                      cachedDataType="ui1"
+                      cachedName="PartnerID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input].ExternalColumns[PartnerID]"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].Columns[PartnerID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].Columns[Name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input].ExternalColumns[PartnerID]"
+                      dataType="ui1"
+                      name="PartnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV PartnerInfo"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV PartnerInfo"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV PartnerInfo.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[PartnerInfo]"
+                  connectionManagerRefId="Package.ConnectionManagers[PartnerInfo]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].Columns[PartnerID]"
+                      cachedDataType="ui1"
+                      cachedName="PartnerID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[PartnerID]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[PartnerID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].Columns[Website]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Website"
+                      externalMetadataColumnId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[Website]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Website]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].Columns[Note]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Note"
+                      externalMetadataColumnId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Note]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[PartnerID]"
+                      dataType="ui1"
+                      name="PartnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[Website]"
+                      dataType="wstr"
+                      length="50"
+                      name="Website" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV Retailer"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Retailer"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Retailer.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Retailer]"
+                  connectionManagerRefId="Package.ConnectionManagers[Retailer]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].Columns[RetailerID]"
+                      cachedDataType="ui1"
+                      cachedName="RetailerID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[RetailerID]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[RetailerID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].Columns[Website]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Website"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Website]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Website]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].Columns[Zip]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Zip"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Zip]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Zip]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[RetailerID]"
+                      dataType="ui1"
+                      name="RetailerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Website]"
+                      dataType="wstr"
+                      length="50"
+                      name="Website" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="50"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input].ExternalColumns[Zip]"
+                      dataType="wstr"
+                      length="50"
+                      name="Zip" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV Team"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Team"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Team.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Team]"
+                  connectionManagerRefId="Package.ConnectionManagers[Team]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].Columns[TeamID]"
+                      cachedDataType="ui1"
+                      cachedName="TeamID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].ExternalColumns[TeamID]"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[TeamID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].Columns[Note]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Note"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[Note]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].ExternalColumns[TeamID]"
+                      dataType="ui1"
+                      name="TeamID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\CSV Type"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="CSV Type"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\CSV Type.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Type]"
+                  connectionManagerRefId="Package.ConnectionManagers[Type]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].Columns[TypeID]"
+                      cachedDataType="ui1"
+                      cachedName="TypeID"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].ExternalColumns[TypeID]"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[TypeID]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].Columns[Note]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Note"
+                      externalMetadataColumnId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[Note]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].ExternalColumns[TypeID]"
+                      dataType="ui1"
+                      name="TypeID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Discount"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Discount"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Discount]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Discount.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[DiscountID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[DiscountID]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[DiscountID]"
+                      name="DiscountID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[RetailerID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[RetailerID]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[RetailerID]"
+                      name="RetailerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[MinQuantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[MinQuantity]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[MinQuantity]"
+                      name="MinQuantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[MaxQuantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[MaxQuantity]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[MaxQuantity]"
+                      name="MaxQuantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[Amount]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].Columns[Amount]"
+                      name="Amount"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[DiscountID]"
+                      dataType="ui1"
+                      name="DiscountID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[RetailerID]"
+                      dataType="ui1"
+                      name="RetailerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[MinQuantity]"
+                      dataType="i4"
+                      name="MinQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[MaxQuantity]"
+                      dataType="i4"
+                      name="MaxQuantity" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output].ExternalColumns[Amount]"
+                      dataType="ui1"
+                      name="Amount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[DiscountID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[DiscountID]"
+                      name="DiscountID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[RetailerID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[RetailerID]"
+                      name="RetailerID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[MinQuantity]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[MinQuantity]"
+                      name="MinQuantity" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[MaxQuantity]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[MaxQuantity]"
+                      name="MaxQuantity" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[Amount]"
+                      name="Amount" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Game"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Game"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Game]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Game.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[GameID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[GameID]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[GameID]"
+                      name="GameID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[TypeID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[TypeID]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[TypeID]"
+                      name="TypeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[PartnerID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[PartnerID]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[PartnerID]"
+                      name="PartnerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Note]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].Columns[Note]"
+                      name="Note"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[GameID]"
+                      dataType="ui1"
+                      name="GameID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[TypeID]"
+                      dataType="ui1"
+                      name="TypeID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[PartnerID]"
+                      dataType="ui1"
+                      name="PartnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="cy"
+                      name="Price" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[GameID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[GameID]"
+                      name="GameID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[TypeID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[TypeID]"
+                      name="TypeID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[PartnerID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[PartnerID]"
+                      name="PartnerID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="cy"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      name="Note" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table GameTeam"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table GameTeam"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[GameTeam]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table GameTeam.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[GameID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].ExternalColumns[GameID]"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[GameID]"
+                      name="GameID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[TeamID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].ExternalColumns[TeamID]"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[TeamID]"
+                      name="TeamID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[RoyaltyPer]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].ExternalColumns[RoyaltyPer]"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].Columns[RoyaltyPer]"
+                      name="RoyaltyPer"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].ExternalColumns[GameID]"
+                      dataType="ui1"
+                      name="GameID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].ExternalColumns[TeamID]"
+                      dataType="ui1"
+                      name="TeamID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output].ExternalColumns[RoyaltyPer]"
+                      dataType="cy"
+                      name="RoyaltyPer" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[GameID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[GameID]"
+                      name="GameID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[TeamID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[TeamID]"
+                      name="TeamID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[RoyaltyPer]"
+                      dataType="cy"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[RoyaltyPer]"
+                      name="RoyaltyPer" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Order"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Order"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Order]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Order.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[OrderID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[GameID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[GameID]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[GameID]"
+                      name="GameID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[RetailerID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[RetailerID]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[RetailerID]"
+                      name="RetailerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[TotalAmount]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[TotalAmount]"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].Columns[TotalAmount]"
+                      name="TotalAmount"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                      dataType="i4"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[GameID]"
+                      dataType="ui1"
+                      name="GameID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[RetailerID]"
+                      dataType="ui1"
+                      name="RetailerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output].ExternalColumns[TotalAmount]"
+                      dataType="cy"
+                      name="TotalAmount" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[OrderID]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[GameID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[GameID]"
+                      name="GameID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[RetailerID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[RetailerID]"
+                      name="RetailerID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[OrderDate]"
+                      name="OrderDate" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[TotalAmount]"
+                      dataType="cy"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[TotalAmount]"
+                      name="TotalAmount" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Partner"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Partner"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Partner]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Partner.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].Columns[PartnerID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].ExternalColumns[PartnerID]"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].Columns[PartnerID]"
+                      name="PartnerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].ExternalColumns[PartnerID]"
+                      dataType="ui1"
+                      name="PartnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[PartnerID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[PartnerID]"
+                      name="PartnerID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table PartnerInfo"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table PartnerInfo"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[PartnerInfo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table PartnerInfo.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[PartnerID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[PartnerID]"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[PartnerID]"
+                      name="PartnerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Website]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[Website]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Website]"
+                      name="Website"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Note]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].Columns[Note]"
+                      name="Note"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[PartnerID]"
+                      dataType="ui1"
+                      name="PartnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[Website]"
+                      dataType="wstr"
+                      length="50"
+                      name="Website" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[PartnerID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[PartnerID]"
+                      name="PartnerID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[Website]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[Website]"
+                      name="Website" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[State]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      name="Note" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Retailer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Retailer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Retailer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Retailer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[RetailerID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[RetailerID]"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[RetailerID]"
+                      name="RetailerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Website]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Website]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Website]"
+                      name="Website"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Zip]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].Columns[Zip]"
+                      name="Zip"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[RetailerID]"
+                      dataType="ui1"
+                      name="RetailerID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Website]"
+                      dataType="wstr"
+                      length="50"
+                      name="Website" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="50"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output].ExternalColumns[Zip]"
+                      dataType="wstr"
+                      length="50"
+                      name="Zip" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[RetailerID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[RetailerID]"
+                      name="RetailerID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Website]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Website]"
+                      name="Website" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[City]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[Zip]"
+                      name="Zip" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Team"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Team"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Team]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Team.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[TeamID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].ExternalColumns[TeamID]"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[TeamID]"
+                      name="TeamID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[Note]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].Columns[Note]"
+                      name="Note"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].ExternalColumns[TeamID]"
+                      dataType="ui1"
+                      name="TeamID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[TeamID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[TeamID]"
+                      name="TeamID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      name="Note" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Export To CSV\Table Type"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Table Type"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[game].[Type]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Export To CSV\Table Type.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DB_Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[DB_Connection]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[TypeID]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].ExternalColumns[TypeID]"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[TypeID]"
+                      name="TypeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[Note]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].Columns[Note]"
+                      name="Note"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].ExternalColumns[TypeID]"
+                      dataType="ui1"
+                      name="TypeID" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output].ExternalColumns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      name="Note" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[TypeID]"
+                      dataType="ui1"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[TypeID]"
+                      name="TypeID" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      dataType="wstr"
+                      length="250"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[Note]"
+                      name="Note" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output]"
+              endId="Package\Export To CSV\CSV Game.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Game.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output1]"
+              endId="Package\Export To CSV\CSV GameTeam.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table GameTeam.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output2]"
+              endId="Package\Export To CSV\CSV Order.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Order.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output3]"
+              endId="Package\Export To CSV\CSV Partner.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Partner.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output4]"
+              endId="Package\Export To CSV\CSV PartnerInfo.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table PartnerInfo.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output5]"
+              endId="Package\Export To CSV\CSV Retailer.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Retailer.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output6]"
+              endId="Package\Export To CSV\CSV Team.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Team.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output7]"
+              endId="Package\Export To CSV\CSV Type.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Type.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Export To CSV.Paths[OLE DB Source Output8]"
+              endId="Package\Export To CSV\CSV Discount.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Export To CSV\Table Discount.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Export To CSV"
+          TopLeft="259.374996135011,132.052634064511" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Export To CSV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140,42.6666666666667"
+          Id="Package\Export To CSV\CSV Partner"
+          TopLeft="182.499997280538,343.473690675566" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Export To CSV\Table PartnerInfo"
+          TopLeft="357.499994672835,242.894741413996" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\Export To CSV\Table Team"
+          TopLeft="743.124988926575,240.157899257219" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\Export To CSV\Table Discount"
+          TopLeft="179.999997317791,72.5263171546017" />
+        <NodeLayout
+          Size="138,42.6666666666667"
+          Id="Package\Export To CSV\Table Game"
+          TopLeft="358.749994654209,71.157896076213" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\CSV Retailer"
+          TopLeft="549.999991804361,331.157900970068" />
+        <NodeLayout
+          Size="133.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\CSV Game"
+          TopLeft="353.124994738028,159.421055632285" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\Table GameTeam"
+          TopLeft="520.624992242083,71.157896076213" />
+        <NodeLayout
+          Size="133.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\Table Type"
+          TopLeft="188.124997196719,418.052639447751" />
+        <NodeLayout
+          Size="128,42.6666666666667"
+          Id="Package\Export To CSV\CSV Type"
+          TopLeft="186.249997224659,502.894746307851" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Export To CSV\CSV Order"
+          TopLeft="729.374989131466,162.157897789062" />
+        <NodeLayout
+          Size="144,42.6666666666667"
+          Id="Package\Export To CSV\Table Partner"
+          TopLeft="184.374997252598,246.315794109968" />
+        <NodeLayout
+          Size="146.666666666667,42.6666666666667"
+          Id="Package\Export To CSV\Table Retailer"
+          TopLeft="542.49999191612,240.157899257219" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\Export To CSV\Table Order"
+          TopLeft="733.124989075586,67.0526328410469" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\CSV PartnerInfo"
+          TopLeft="354.374994719401,340.736848518789" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Export To CSV\CSV Team"
+          TopLeft="743.749988917262,331.157900970068" />
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\CSV Discount"
+          TopLeft="176.24999737367,155.71930097587" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Export To CSV\CSV GameTeam"
+          TopLeft="521.24999223277,157.368424014702" />
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output8]"
+          TopLeft="252.124997345731,115.192983821268">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.5263171546017"
+              Start="0,0"
+              End="0,33.0263171546017">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0263171546017" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output7]"
+          TopLeft="252.520830544022,460.719306114418">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.1754401934333"
+              Start="0,0"
+              End="0,34.6754401934333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.6754401934333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output6]"
+          TopLeft="810.437488921918,282.824565923885">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.3333350461828"
+              Start="0,0"
+              End="0,40.8333350461828">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.8333350461828" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output5]"
+          TopLeft="618.249991860241,282.824565923885">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.3333350461828"
+              Start="0,0"
+              End="0,40.8333350461828">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.8333350461828" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output4]"
+          TopLeft="435.937494696118,285.561408080663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.1754404381263"
+              Start="0,0"
+              End="0,47.6754404381263">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.6754404381263" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output3]"
+          TopLeft="254.437497266568,288.982460776635">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.4912298989318"
+              Start="0,0"
+              End="0,46.9912298989318">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.9912298989318" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output2]"
+          TopLeft="798.249989103526,109.719299507714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.4385982813484"
+              Start="0,0"
+              End="0,44.9385982813484">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.9385982813484" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output1]"
+          TopLeft="602.604158904093,113.82456274288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.5438612718222"
+              Start="0,0"
+              End="0,36.0438612718222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.0438612718222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Export To CSV.Paths[OLE DB Source Output]"
+          TopLeft="423.770828029451,113.82456274288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5964928894051"
+              Start="0,0"
+              End="0,38.0964928894051">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0964928894051" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table PartnerInfo">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Team">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Discount">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Game">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table GameTeam">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Type">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Partner">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Retailer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export To CSV\Table Order">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

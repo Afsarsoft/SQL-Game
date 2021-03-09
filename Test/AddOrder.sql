@@ -1,4 +1,21 @@
+-- TRUNCATE TABLE game.Retailer;
+-- GO
+-- TRUNCATE TABLE game.Discount;
+-- GO
 -- TRUNCATE TABLE game.[Order];
+-- GO
+-- TRUNCATE TABLE game.Game;
+-- GO
+-- TRUNCATE TABLE game.Type;
+-- GO
+-- TRUNCATE TABLE game.GameTeam;
+-- GO
+-- TRUNCATE TABLE game.Team;
+-- GO
+-- TRUNCATE TABLE game.Partner;
+-- GO
+-- TRUNCATE TABLE game.PartnerInfo;
+
 
 SELECT *
 FROM game.Game;

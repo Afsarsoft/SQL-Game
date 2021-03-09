@@ -13,6 +13,6 @@ A Sample OLTP database for fictional Game production company. <br />
 
 # Automated Installation 
 1- Create a folder "C:\game" <br />
-2- Copy folders "Script1", "Script2", "SP", and "View" in folder "C:\game" <br /> 
+2- Copy folders "Script1", "Script2", "SP", "View", and "CSV" in folder "C:\game" <br /> 
 3- For SQL DB or Azure SQL DB, change connection "DB_Connection" according to your environment and Run SSIS package BuildGame <br />
 
