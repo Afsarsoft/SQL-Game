@@ -11,24 +11,6 @@ Call by:        TBD, UI, Add hoc
 Steps:          NA
 Parameter(s):   None
 Usage:          EXEC game.CreateFKs
-nasdkasmamksd
-asdlasdlsakdla
-a
-s
-asdasd
-sad
-a
-ad
-a
-d
-a
-da
-
-as
-a
-asd
-sa
-
 ****************************************************************************************************
 SUMMARY OF CHANGES
 Date(yyyy-mm-dd)    Author              Comments
